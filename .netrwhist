@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =1
+let g:netrw_dirhist_1='/home/finn/.tmux'
+let g:netrw_dirhist_0='/home/finn/.config/fish/conf.d'
+let g:netrw_dirhist_9='/home/finn/.config/fontconfig'
+let g:netrw_dirhist_8='/home/finn/.config/nvim'
+let g:netrw_dirhist_7='/home/finn/.gnupg/private-keys-v1.d'
+let g:netrw_dirhist_6='/home/finn/.vim/autoload'
+let g:netrw_dirhist_5='/home/finn/.vim'
+let g:netrw_dirhist_4='/home/finn/.vscode/extensions'
+let g:netrw_dirhist_3='/home/finn/.vscode'
+let g:netrw_dirhist_2='/home/finn/.ssh'
