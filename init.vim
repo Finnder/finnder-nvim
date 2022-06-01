@@ -14,16 +14,23 @@ Plug 'iamcco/markdown-preview.nvim'
 
 "Language Server (Intellasense)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver']
-
-" Plug 'davidhalter/jedi-vim' " Python autocomplete
 
 "Syntax
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'preservim/vim-markdown'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'leafgarland/typescript-vim'
 Plug 'sheerun/vim-polyglot'
+
+let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver']
+
+augroup ReactFiletypes
+  autocmd!
+  autocmd BufRead,BufNewFile *.jsx set filetype=javascriptreact
+  autocmd BufRead,BufNewFile *.tsx set filetype=typescriptreact
+augroup EN
 
 " Status Bar
 Plug 'vim-airline/vim-airline'
@@ -65,11 +72,18 @@ syntax on
 " just a shortcut
 command W w
 
+" line highlighting
+set cursorline
+
 " disable cursor styling in nvim
 set guicursor=
 
 " default colorscheme
 colorscheme everforest
+
+if has("nvim")
+    set inccommand=nosplit
+endif
 
 " transparent toggle
 hi Normal guibg=NONE ctermbg=NONE 
@@ -126,6 +140,10 @@ autocmd Filetype go setlocal nolist
 autocmd Filetype go setlocal noexpandtab
 autocmd Filetype go setlocal shiftwidth=4 softtabstop=4 tabstop=4
 
+autocmd Filetype go let g:airline_section_z = '🐹'
+autocmd Filetype py let g:airline_section_z = '🐍'
+autocmd Filetype js let g:airline_section_z = '🌐'
+
 " key for fzf 
 noremap <c-p> :Files<CR>
 noremap <c-f> :R<CR>
@@ -141,5 +159,6 @@ let g:NERDTreeIgnore = []
 let g:NERDTreeStatusline = ''
 " Automaticaly close nvim if NERDTree is only thing left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 " Toggle
 nnoremap <silent> <C-b> :NERDTreeToggle<CR>
